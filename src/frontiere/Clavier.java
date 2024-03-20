@@ -5,7 +5,12 @@ import java.util.Scanner;
 
 public class Clavier {
 	private static Scanner scan = new Scanner(System.in);
-
+	
+	public static String entrerString(String question) {
+		System.out.println(question);
+		return scan.nextLine();
+	}
+	
 	public static int entrerEntier(String question) {
 		boolean entreeCorrecte = false;
 		int chiffre = 0;

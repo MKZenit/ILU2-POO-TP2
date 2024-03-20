@@ -11,8 +11,11 @@ public class ControlTrouverEtalVendeur {
 	}
 
 	public Etal trouverEtalVendeur(String nomVendeur) {
-		//TODO a completer
+		var gaulois = this.village.trouverHabitant(nomVendeur);
 		Etal etal = null;
+		if(gaulois!=null) {
+			etal = this.village.rechercherEtal(gaulois);
+		}
 		return etal;
 	}
 }

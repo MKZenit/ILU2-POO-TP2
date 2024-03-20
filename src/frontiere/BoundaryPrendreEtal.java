@@ -43,12 +43,11 @@ public class BoundaryPrendreEtal {
 
 	private void installerVendeur(String nomVendeur) {
 		String produit;
-		try (Scanner clavier = new Scanner(System.in)) {
+		
 			System.out.println("C'est parfait, il me reste un étal pour vous !\nIl me faudrait quelques reseignements :\n");
 			System.out.println("Quel produit souhaitez-vous vendre ?");
-			produit = clavier.nextLine();
+			produit = scan.nextLine();
 
-		}
 			int nbProduit = Clavier.entrerEntier("Combien souhaitez-vous en vendre ?");
 			int numeroEtal = this.controlPrendreEtal.prendreEtal(nomVendeur, produit, nbProduit);
 			if(numeroEtal != -1) {
@@ -56,7 +55,7 @@ public class BoundaryPrendreEtal {
 						.append("Le vendeur ")
 						.append(nomVendeur)
 						.append(" s'est installé à l'étal n°")
-						.append(numeroEtal)
+						.append(numeroEtal+1)
 						.toString() );
 			}
 	}
