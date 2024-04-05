@@ -21,10 +21,6 @@ public class ControlAcheterProduit {
 		return this.controlVerifierIdentite.verifierIdentite(nomVendeur);
 	}
 	
-	public Etal trouverEtalVendeur(String nomVendeur) {
-		return this.controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
-	}
-	
 	public String[] trouverVendeursProduit(String produit) {
 		Gaulois[] vendeurs = this.village.rechercherVendeursProduit(produit);
 		String[] nomVendeurs = new String[vendeurs.length];

@@ -36,6 +36,7 @@ class ControlEmmenagerTest {
 		assertFalse(controlEmmenager.isHabitant("Existe pas"));
 		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
 		assertTrue(controlEmmenager.isHabitant("Panoramix"));
+		assertFalse(controlEmmenager.isHabitant(""));
 	}
 
 	@Test
