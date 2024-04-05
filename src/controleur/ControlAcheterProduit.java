@@ -34,4 +34,8 @@ public class ControlAcheterProduit {
 		return nomVendeurs;
 	}
 	
+	public int acheterProduit(String nomVendeur, int nbAcheter) {
+		return this.controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur).acheterProduit(nbAcheter);
+	}
+	
 }

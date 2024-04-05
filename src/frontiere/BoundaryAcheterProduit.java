@@ -38,9 +38,9 @@ public class BoundaryAcheterProduit {
 					}
 					else {
 						question.append("\n");
-						for(int i=0; i<vendeursProduit.length; i++) {
+						for(int i=1; i<=vendeursProduit.length; i++) {
 							question.append(i+"- ");
-							question.append(vendeursProduit[i]);
+							question.append(vendeursProduit[i-1]);
 							question.append("\n");
 						}
 						int choixVendeur = 1;
@@ -49,40 +49,38 @@ public class BoundaryAcheterProduit {
 								System.out.println("Vous devez entrer un nombre compris entre 1 et "+vendeursProduit.length);
 							choixVendeur = Clavier.entrerEntier(question.toString());
 						}while(choixVendeur<1 || choixVendeur>vendeursProduit.length);
-						String nomVendeurChoisi = vendeursProduit[choixVendeur];
+						String nomVendeurChoisi = vendeursProduit[choixVendeur-1];
 						System.out.println(nomAcheteur+" se déplace jusqu'à l'étal du vendeur "+nomVendeurChoisi);
-						var etal = this.controlAcheterProduit.trouverEtalVendeur(nomVendeurChoisi);
 						System.out.println("Bonjour "+nomAcheteur);
-						int nbSouhaite = Clavier.entrerEntier("Combien de "+produit+ " voulez-vous acheter ?");
-						if(etal.getQuantite()<=0) {
-							System.out.println(nomAcheteur+" veut acheter "+ nbSouhaite + " "+ produit + ", malheureusement il n'y en a plus !");
-						}else if(etal.getQuantite()<nbSouhaite) {
+						int nbSouhaiter = Clavier.entrerEntier("Combien de "+produit+ " voulez-vous acheter ?");
+						int nbAcheter = this.controlAcheterProduit.acheterProduit(nomVendeurChoisi, nbSouhaiter);
+						if(nbAcheter<=0) {
+							System.out.println(nomAcheteur+" veut acheter "+ nbSouhaiter + " "+ produit + ", malheureusement il n'y en a plus !");
+						}else if(nbAcheter<nbSouhaiter) {
 							System.out.println(new StringBuilder()
 									.append(nomAcheteur)
 									.append(" veut acheter ")
-									.append(nbSouhaite)
+									.append(nbSouhaiter)
 									.append(" ")
 									.append(produit)
 									.append(", malheureusement ")
 									.append(nomVendeurChoisi)
 									.append(" n'en a plus que ")
-									.append(etal.getQuantite())
+									.append(nbAcheter)
 									.append(". ")
 									.append(nomAcheteur)
 									.append(" achète tout le stock de Bonemine.")
 									.toString());
-							etal.acheterProduit(etal.getQuantite());
 						}
 						else {
 							System.out.println(new StringBuilder()
 									.append(nomAcheteur)
 									.append(" achète ")
-									.append(nbSouhaite)
+									.append(nbSouhaiter)
 									.append(produit)
 									.append(" à ")
 									.append(nomVendeurChoisi)
 									.toString());
-							etal.acheterProduit(nbSouhaite);
 						}
 					}
 					break;
@@ -92,8 +90,7 @@ public class BoundaryAcheterProduit {
 					break;
 
 				default:
-					System.out
-							.println("Vous devez choisir un chiffre entre 1 et 3 !");
+					System.out.println("Vous devez choisir un chiffre entre 1 et 3 !");
 					break;
 				}
 			} while (choixUtilisateur != 1 && choixUtilisateur != 2 && choixUtilisateur !=3);
