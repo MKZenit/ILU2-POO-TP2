@@ -1,8 +1,6 @@
 package frontiere;
 
 import controleur.ControlAfficherMarche;
-import personnages.Gaulois;
-import villagegaulois.Etal;
 
 public class BoundaryAfficherMarche {
 	private ControlAfficherMarche controlAfficherMarche;
